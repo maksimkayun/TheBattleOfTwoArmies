@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBattleOfTwoArmies", "TheBattleOfTwoArmies\TheBattleOfTwoArmies.csproj", "{74C9BCD6-E1C4-4B07-8E87-AE506FD04C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{08356685-08DA-46A7-B86F-B686E05070F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kingdoms", "Kingdoms\Kingdoms.csproj", "{2302B909-5E58-49B4-9784-5E3DCCF1CA8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74C9BCD6-E1C4-4B07-8E87-AE506FD04C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C9BCD6-E1C4-4B07-8E87-AE506FD04C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C9BCD6-E1C4-4B07-8E87-AE506FD04C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C9BCD6-E1C4-4B07-8E87-AE506FD04C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08356685-08DA-46A7-B86F-B686E05070F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08356685-08DA-46A7-B86F-B686E05070F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08356685-08DA-46A7-B86F-B686E05070F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08356685-08DA-46A7-B86F-B686E05070F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2302B909-5E58-49B4-9784-5E3DCCF1CA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2302B909-5E58-49B4-9784-5E3DCCF1CA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2302B909-5E58-49B4-9784-5E3DCCF1CA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2302B909-5E58-49B4-9784-5E3DCCF1CA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
