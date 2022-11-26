@@ -9,13 +9,40 @@ public class OrcMelee : Melee
     {
     }
 
-    public override void Run()
+    public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"{nameof(OrcMelee)} делает ход");
+        Attack(enemyUnits[new Random().Next(0,enemyUnits.Count - 1)]);
+    }
+
+    public override void TakeAttack(int valueDamage)
+    {
+        if (ProbabilityBy(Agility))
+        {
+            Console.WriteLine($"{nameof(OrcMelee)} смог увернуться от атаки");
+        }
+        else if (Health > valueDamage)
+        {
+            base.TakeAttack(valueDamage);
+            Console.WriteLine($"{nameof(OrcMelee)} получил урон, оставшееся здоровье: {Health}");
+        }
+        else
+        {
+            base.TakeAttack(valueDamage);
+            Console.WriteLine($"{nameof(OrcMelee)} получил урон и умер");
+        }
     }
 
     public override void Attack(Unit unit)
     {
-        throw new NotImplementedException();
+        if (ProbabilityBy(Accuracy))
+        {
+            Console.WriteLine($"{nameof(OrcMelee)} атакует");
+            unit.TakeAttack(Damage);
+        }
+        else
+        {
+            Console.WriteLine($"{nameof(OrcMelee)} промахивается");
+        }
     }
 }
