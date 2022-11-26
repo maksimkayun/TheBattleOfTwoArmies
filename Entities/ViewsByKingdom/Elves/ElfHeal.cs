@@ -20,7 +20,7 @@ public class ElfHeal : Heal
     {
         base.TakeAttack(valueDamage);
         Console.WriteLine(Health > 0
-            ? $"{nameof(ElfHeal)} получил урон, оставшееся здоровье: {Health}"
+            ? $"{nameof(ElfHeal)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}"
             : $"{nameof(ElfHeal)} получил урон и умер");
     }
 
@@ -33,17 +33,17 @@ public class ElfHeal : Heal
             if (valueIncrease >= Intelligence)
             {
                 unit.Health += Intelligence;
-                message = $"{nameof(ElfHeal)} вылечил {nameof(unit)} на {Intelligence}";
+                message = $"{nameof(ElfHeal)} вылечил {unit.GetType().Name} на {Intelligence}";
             }
             else
             {
                 unit.Health += valueIncrease;
-                message = $"{nameof(ElfHeal)} вылечил {nameof(unit)} на {valueIncrease}";
+                message = $"{nameof(ElfHeal)} вылечил {unit.GetType().Name} на {valueIncrease}";
             }
         }
         else
         {
-            message = $"{nameof(ElfHeal)} промахнулся и не вылечил {nameof(unit)}";
+            message = $"{nameof(ElfHeal)} промахнулся и не вылечил {unit.GetType().Name}";
         }
         Console.WriteLine(message);
     }

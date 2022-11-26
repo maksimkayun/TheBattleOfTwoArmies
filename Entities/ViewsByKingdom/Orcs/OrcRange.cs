@@ -24,7 +24,7 @@ public class OrcRange : Range
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcRange)} получил урон, оставшееся здоровье: {Health}");
+            Console.WriteLine($"{nameof(OrcRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {

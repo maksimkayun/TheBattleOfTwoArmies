@@ -24,7 +24,7 @@ public class OrcMelee : Melee
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcMelee)} получил урон, оставшееся здоровье: {Health}");
+            Console.WriteLine($"{nameof(OrcMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {

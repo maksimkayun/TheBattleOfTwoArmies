@@ -24,7 +24,7 @@ public class ElfMelee : Melee
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfMelee)} получил урон, оставшееся здоровье: {Health}");
+            Console.WriteLine($"{nameof(ElfMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {

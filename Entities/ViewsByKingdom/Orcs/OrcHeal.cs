@@ -20,7 +20,7 @@ public class OrcHeal : Heal
     {
         base.TakeAttack(valueDamage);
         Console.WriteLine(Health > 0
-            ? $"{nameof(OrcHeal)} получил урон, оставшееся здоровье: {Health}"
+            ? $"{nameof(OrcHeal)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}"
             : $"{nameof(OrcHeal)} получил урон и умер");
     }
 
@@ -33,17 +33,17 @@ public class OrcHeal : Heal
             if (valueIncrease >= Intelligence)
             {
                 unit.Health += Intelligence;
-                message = $"{nameof(OrcHeal)} вылечил {nameof(unit)} на {Intelligence}";
+                message = $"{nameof(OrcHeal)} вылечил {unit.GetType().Name} на {Intelligence}";
             }
             else
             {
                 unit.Health += valueIncrease;
-                message = $"{nameof(OrcHeal)} вылечил {nameof(unit)} на {valueIncrease}";
+                message = $"{nameof(OrcHeal)} вылечил {unit.GetType().Name} на {valueIncrease}";
             }
         }
         else
         {
-            message = $"{nameof(OrcHeal)} промахнулся и не вылечил {nameof(unit)}";
+            message = $"{nameof(OrcHeal)} промахнулся и не вылечил {unit.GetType().Name}";
         }
         Console.WriteLine(message);
     }

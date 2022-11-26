@@ -24,7 +24,7 @@ public class ElfRange : Range
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfRange)} получил урон, оставшееся здоровье: {Health}");
+            Console.WriteLine($"{nameof(ElfRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {
