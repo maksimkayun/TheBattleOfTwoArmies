@@ -1,4 +1,6 @@
-﻿namespace Entities.BasicViews;
+﻿using Entities.Strategy;
+
+namespace Entities.BasicViews;
 
 public abstract class Range : Unit
 {
@@ -7,8 +9,8 @@ public abstract class Range : Unit
     public int Damage { get; set; }
 
 
-    protected Range(int health, int accuracy, int initiative, int arrows, int agility, int damage) :
-        base(health, accuracy, initiative)
+    protected Range(int health, int accuracy, int initiative, int arrows, int agility, int damage, IStrategy strategy) :
+        base(health, accuracy, initiative, strategy)
     {
         Arrows = arrows;
         Agility = agility;

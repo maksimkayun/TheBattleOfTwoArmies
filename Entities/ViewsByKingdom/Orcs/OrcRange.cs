@@ -1,11 +1,12 @@
-﻿using Range = Entities.BasicViews.Range;
+﻿using Entities.Strategy;
+using Range = Entities.BasicViews.Range;
 
 namespace Entities.ViewsByKingdom.Orcs;
 
 public class OrcRange : Range
 {
-    public OrcRange(int health, int accuracy, int initiative, int arrows, int agility, int damage) :
-        base(health, accuracy, initiative, arrows, agility, damage)
+    public OrcRange(int health, int accuracy, int initiative, int arrows, int agility, int damage, IStrategy strategy) :
+        base(health, accuracy, initiative, arrows, agility, damage, strategy)
     {
     }
 
@@ -40,8 +41,7 @@ public class OrcRange : Range
             Arrows--;
             if (ProbabilityBy(Accuracy))
             {
-                Console.WriteLine($"{nameof(OrcRange)} атакует");
-                unit.TakeAttack(Damage);
+                Console.WriteLine(_strategy.Attack(this, unit, Damage));
             }
             else
             {
@@ -51,15 +51,6 @@ public class OrcRange : Range
         else
         {
             Console.WriteLine($"У {nameof(OrcRange)} закончились стрелы");
-            if (ProbabilityBy(Accuracy))
-            {
-                Console.WriteLine($"{nameof(OrcRange)} атакует в ближнем бою");
-                unit.TakeAttack((int) (Damage - 0.5 * Damage));
-            }
-            else
-            {
-                Console.WriteLine($"{nameof(OrcRange)} промахивается");
-            }
         }
         
     }

@@ -1,11 +1,12 @@
 ﻿using Entities.BasicViews;
+using Entities.Strategy;
 
 namespace Entities.ViewsByKingdom.Orcs;
 
 public class OrcMelee : Melee
 {
-    public OrcMelee(int health, int accuracy, int initiative, int damage, int agility, int strength) : base(health,
-        accuracy, initiative, damage, agility, strength)
+    public OrcMelee(int health, int accuracy, int initiative, int damage, int agility, int strength, IStrategy strategy) : base(health,
+        accuracy, initiative, damage, agility, strength, strategy)
     {
     }
 
@@ -37,8 +38,7 @@ public class OrcMelee : Melee
     {
         if (ProbabilityBy(Accuracy))
         {
-            Console.WriteLine($"{nameof(OrcMelee)} атакует");
-            unit.TakeAttack(Damage);
+            Console.WriteLine(_strategy.Attack(this, unit, Damage));
         }
         else
         {

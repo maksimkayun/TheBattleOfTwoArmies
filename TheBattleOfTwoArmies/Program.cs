@@ -10,14 +10,12 @@ namespace TheBattleOfTwoArmies
     {
         public static void Main(string[] args)
         {
-            
-
             List<string> results = new List<string>();
             for (int i = 0; i < 100; i++)
             {
                 var fabricOrc = new Kingdoms.Kingdoms().GetFabricForKingdom(Kingdoms.Kingdoms.KingdomsEnum.OrcKingdom);
                 var fabricElv = new Kingdoms.Kingdoms().GetFabricForKingdom(Kingdoms.Kingdoms.KingdomsEnum.ElfKingdom);
-
+            
                 var elfUnits = new List<Unit> {fabricElv?.CreateHeal(), fabricElv?.CreateMelee(), fabricElv?.CreateRange()};
                 var orcUnits = new List<Unit> {fabricOrc?.CreateHeal(), fabricOrc?.CreateMelee(), fabricOrc?.CreateRange()};
                 results.Add(MakeWar(elfUnits, orcUnits));
@@ -29,8 +27,8 @@ namespace TheBattleOfTwoArmies
 
         private static string MakeWar(List<Unit> elfUnits, List<Unit> orcUnits)
         {
-            elfUnits.OrderBy(e => e.Initiative);
-            orcUnits.OrderBy(o => o.Initiative);
+            elfUnits = elfUnits.OrderBy(e => e.Initiative).ToList();
+            orcUnits = orcUnits.OrderBy(o => o.Initiative).ToList();
             
             var iteratorElfs = 0;
             var iteratorOrcs = 0;

@@ -1,4 +1,6 @@
-﻿namespace Entities;
+﻿using Entities.Strategy;
+
+namespace Entities;
 
 public abstract class Unit
 {
@@ -6,13 +8,15 @@ public abstract class Unit
     public int Health { get; set; }
     public int Accuracy { get; set; }
     public int Initiative { get; set; }
+    protected IStrategy _strategy;
     
-    protected Unit(int health, int accuracy, int initiative)
+    protected Unit(int health, int accuracy, int initiative, IStrategy strategy)
     {
         Health = health;
         MaxHealth = health;
         Accuracy = accuracy;
         Initiative = initiative;
+        _strategy = strategy;
     }
 
     public abstract void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits);

@@ -1,10 +1,12 @@
-﻿namespace Entities.BasicViews;
+﻿using Entities.Strategy;
+
+namespace Entities.BasicViews;
 
 public abstract class Heal : Unit
 {
     public int Intelligence { get; set; }
 
-    public Heal(int health, int accuracy, int initiative, int intelligence) : base(health, accuracy, initiative)
+    public Heal(int health, int accuracy, int initiative, int intelligence, IStrategy strategy) : base(health, accuracy, initiative, strategy)
     {
         Intelligence = intelligence;
     }

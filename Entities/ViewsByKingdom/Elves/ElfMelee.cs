@@ -1,11 +1,12 @@
 ﻿using Entities.BasicViews;
+using Entities.Strategy;
 
 namespace Entities.ViewsByKingdom.Elves;
 
 public class ElfMelee : Melee
 {
-    public ElfMelee(int health, int accuracy, int initiative, int damage, int agility, int strength) : base(health,
-        accuracy, initiative, damage, agility, strength)
+    public ElfMelee(int health, int accuracy, int initiative, int damage, int agility, int strength, IStrategy strategy) : base(health,
+        accuracy, initiative, damage, agility, strength, strategy)
     {
     }
 
@@ -37,8 +38,7 @@ public class ElfMelee : Melee
     {
         if (ProbabilityBy(Accuracy))
         {
-            Console.WriteLine($"{nameof(ElfMelee)} атакует");
-            unit.TakeAttack(Damage);
+            Console.WriteLine(_strategy.Attack(this, unit, Damage));
         }
         else
         {

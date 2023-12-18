@@ -1,11 +1,12 @@
 ﻿using Entities.BasicViews;
+using Entities.Strategy;
 
 namespace Entities.ViewsByKingdom.Orcs;
 
 public class OrcHeal : Heal
 {
-    public OrcHeal(int health, int accuracy, int initiative, int intelligence) : base(health, accuracy, initiative,
-        intelligence)
+    public OrcHeal(int health, int accuracy, int initiative, int intelligence, IStrategy strategy) : base(health, accuracy, initiative,
+        intelligence, strategy)
     {
     }
 
@@ -32,13 +33,11 @@ public class OrcHeal : Heal
             var valueIncrease = unit.MaxHealth - unit.Health;
             if (valueIncrease >= Intelligence)
             {
-                unit.Health += Intelligence;
-                message = $"{nameof(OrcHeal)} вылечил {unit.GetType().Name} на {Intelligence}";
+                message = _strategy.Support(this, unit, Intelligence);
             }
             else
             {
-                unit.Health += valueIncrease;
-                message = $"{nameof(OrcHeal)} вылечил {unit.GetType().Name} на {valueIncrease}";
+                message = _strategy.Support(this, unit, valueIncrease);
             }
         }
         else

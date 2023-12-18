@@ -1,11 +1,12 @@
 ﻿using Entities.BasicViews;
+using Entities.Strategy;
 
 namespace Entities.ViewsByKingdom.Elves;
 
 public class ElfHeal : Heal
 {
-    public ElfHeal(int health, int accuracy, int initiative, int intelligence) : base(health, accuracy, initiative,
-        intelligence)
+    public ElfHeal(int health, int accuracy, int initiative, int intelligence, IStrategy strategy) : base(health, accuracy, initiative,
+        intelligence, strategy)
     {
     }
 
@@ -29,16 +30,16 @@ public class ElfHeal : Heal
         string message;
         if (ProbabilityBy(Accuracy))
         {
+            
             var valueIncrease = unit.MaxHealth - unit.Health;
             if (valueIncrease >= Intelligence)
             {
-                unit.Health += Intelligence;
-                message = $"{nameof(ElfHeal)} вылечил {unit.GetType().Name} на {Intelligence}";
+                message = _strategy.Support(this, unit, Intelligence);
             }
             else
             {
                 unit.Health += valueIncrease;
-                message = $"{nameof(ElfHeal)} вылечил {unit.GetType().Name} на {valueIncrease}";
+                message = _strategy.Support(this, unit, valueIncrease);
             }
         }
         else

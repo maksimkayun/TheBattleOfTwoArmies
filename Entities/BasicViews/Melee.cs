@@ -1,4 +1,6 @@
-﻿namespace Entities.BasicViews;
+﻿using Entities.Strategy;
+
+namespace Entities.BasicViews;
 
 public abstract class Melee : Unit
 {
@@ -6,8 +8,8 @@ public abstract class Melee : Unit
     public int Agility { get; set; }
     public int Strength { get; set; }
 
-    public Melee(int health, int accuracy, int initiative, int damage, int agility, int strength) : base(health,
-        accuracy, initiative)
+    public Melee(int health, int accuracy, int initiative, int damage, int agility, int strength, IStrategy strategy) : base(health,
+        accuracy, initiative, strategy)
     {
         Damage = damage;
         Agility = agility;
