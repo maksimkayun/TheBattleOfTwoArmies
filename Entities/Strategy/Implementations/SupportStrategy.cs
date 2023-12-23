@@ -2,7 +2,7 @@
 
 public class SupportStrategy : IStrategy
 {
-    public string Attack(Unit attackPerson, Unit person, int damage) => string.Empty;
+    public string Run(Unit thisPerson, Unit person, int value) => Support(thisPerson, person, value);
     
     public string Support(Unit healer, Unit person, int health)
     {

@@ -41,7 +41,7 @@ public class OrcRange : Range
             Arrows--;
             if (ProbabilityBy(Accuracy))
             {
-                Console.WriteLine(_strategy.Attack(this, unit, Damage));
+                Console.WriteLine(_strategy.Run(this, unit, Damage));
             }
             else
             {

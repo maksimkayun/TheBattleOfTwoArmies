@@ -33,11 +33,11 @@ public class OrcHeal : Heal
             var valueIncrease = unit.MaxHealth - unit.Health;
             if (valueIncrease >= Intelligence)
             {
-                message = _strategy.Support(this, unit, Intelligence);
+                message = _strategy.Run(this, unit, Intelligence);
             }
             else
             {
-                message = _strategy.Support(this, unit, valueIncrease);
+                message = _strategy.Run(this, unit, valueIncrease);
             }
         }
         else
