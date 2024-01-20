@@ -12,7 +12,7 @@ public class ElfRange : Range
 
     public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        Console.WriteLine($"{nameof(ElfRange)} делает ход");
+        Logger.Log($"{nameof(ElfRange)} делает ход");
         Attack(enemyUnits[new Random().Next(0,enemyUnits.Count - 1)]);
     }
 
@@ -20,17 +20,17 @@ public class ElfRange : Range
     {
         if (ProbabilityBy(Agility))
         {
-            Console.WriteLine($"{nameof(ElfRange)} смог увернуться от атаки");
+            Logger.Log($"{nameof(ElfRange)} смог увернуться от атаки");
         }
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
+            Logger.Log($"{nameof(ElfRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfRange)} получил урон и умер");
+            Logger.Log($"{nameof(ElfRange)} получил урон и умер");
         }
     }
 
@@ -41,16 +41,16 @@ public class ElfRange : Range
             Arrows--;
             if (ProbabilityBy(Accuracy))
             {
-                Console.WriteLine(_strategy.Run(this, unit, Damage));
+                Logger.Log(Strategy.Run(this, unit, Damage));
             }
             else
             {
-                Console.WriteLine($"{nameof(ElfRange)} промахивается");
+                Logger.Log($"{nameof(ElfRange)} промахивается");
             }
         }
         else
         {
-            Console.WriteLine($"У {nameof(ElfRange)} закончились стрелы");
+            Logger.Log($"У {nameof(ElfRange)} закончились стрелы");
         }
     }
 }

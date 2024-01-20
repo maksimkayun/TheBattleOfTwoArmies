@@ -12,7 +12,7 @@ public class OrcMelee : Melee
 
     public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        Console.WriteLine($"{nameof(OrcMelee)} делает ход");
+        Logger.Log($"{nameof(OrcMelee)} делает ход");
         Attack(enemyUnits[new Random().Next(0,enemyUnits.Count - 1)]);
     }
 
@@ -20,17 +20,17 @@ public class OrcMelee : Melee
     {
         if (ProbabilityBy(Agility))
         {
-            Console.WriteLine($"{nameof(OrcMelee)} смог увернуться от атаки");
+            Logger.Log($"{nameof(OrcMelee)} смог увернуться от атаки");
         }
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
+            Logger.Log($"{nameof(OrcMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcMelee)} получил урон и умер");
+            Logger.Log($"{nameof(OrcMelee)} получил урон и умер");
         }
     }
 
@@ -38,11 +38,11 @@ public class OrcMelee : Melee
     {
         if (ProbabilityBy(Accuracy))
         {
-            Console.WriteLine(_strategy.Run(this, unit, Damage));
+            Logger.Log(Strategy.Run(this, unit, Damage));
         }
         else
         {
-            Console.WriteLine($"{nameof(OrcMelee)} промахивается");
+            Logger.Log($"{nameof(OrcMelee)} промахивается");
         }
     }
 }

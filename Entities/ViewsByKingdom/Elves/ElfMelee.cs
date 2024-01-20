@@ -12,7 +12,7 @@ public class ElfMelee : Melee
 
     public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        Console.WriteLine($"{nameof(ElfMelee)} делает ход");
+        Logger.Log($"{nameof(ElfMelee)} делает ход");
         Attack(enemyUnits[new Random().Next(0,enemyUnits.Count - 1)]);
     }
 
@@ -20,17 +20,17 @@ public class ElfMelee : Melee
     {
         if (ProbabilityBy(Agility))
         {
-            Console.WriteLine($"{nameof(ElfMelee)} смог увернуться от атаки");
+            Logger.Log($"{nameof(ElfMelee)} смог увернуться от атаки");
         }
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
+            Logger.Log($"{nameof(ElfMelee)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(ElfMelee)} получил урон и умер");
+            Logger.Log($"{nameof(ElfMelee)} получил урон и умер");
         }
     }
 
@@ -38,11 +38,11 @@ public class ElfMelee : Melee
     {
         if (ProbabilityBy(Accuracy))
         {
-            Console.WriteLine(_strategy.Run(this, unit, Damage));
+            Logger.Log(Strategy.Run(this, unit, Damage));
         }
         else
         {
-            Console.WriteLine($"{nameof(ElfMelee)} промахивается");
+            Logger.Log($"{nameof(ElfMelee)} промахивается");
         }
     }
 }

@@ -12,7 +12,7 @@ public class ElfHeal : Heal
 
     public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        Console.WriteLine($"{nameof(ElfHeal)} делает ход");
+        Logger.Log($"{nameof(ElfHeal)} делает ход");
         if (ProbabilityBy(Initiative)) TargetHeal(friendlyUnits[new Random().Next(0,friendlyUnits.Count - 1)]);
         else GroupHeal(friendlyUnits);
     }
@@ -20,7 +20,7 @@ public class ElfHeal : Heal
     public override void TakeAttack(int valueDamage)
     {
         base.TakeAttack(valueDamage);
-        Console.WriteLine(Health > 0
+        Logger.Log(Health > 0
             ? $"{nameof(ElfHeal)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}"
             : $"{nameof(ElfHeal)} получил урон и умер");
     }
@@ -34,24 +34,24 @@ public class ElfHeal : Heal
             var valueIncrease = unit.MaxHealth - unit.Health;
             if (valueIncrease >= Intelligence)
             {
-                message = _strategy.Run(this, unit, Intelligence);
+                message = Strategy.Run(this, unit, Intelligence);
             }
             else
             {
                 unit.Health += valueIncrease;
-                message = _strategy.Run(this, unit, valueIncrease);
+                message = Strategy.Run(this, unit, valueIncrease);
             }
         }
         else
         {
             message = $"{nameof(ElfHeal)} промахнулся и не вылечил {unit.GetType().Name}";
         }
-        Console.WriteLine(message);
+        Logger.Log(message);
     }
 
     public override void GroupHeal(List<Unit> units)
     {
-        Console.WriteLine($"{nameof(ElfHeal)} кастует групповой хил");
+        Logger.Log($"{nameof(ElfHeal)} кастует групповой хил");
         units.ForEach(TargetHeal);
     }
 }

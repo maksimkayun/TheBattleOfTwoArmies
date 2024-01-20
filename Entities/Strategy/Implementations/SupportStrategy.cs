@@ -7,6 +7,10 @@ public class SupportStrategy : IStrategy
     public string Support(Unit healer, Unit person, int health)
     {
         person.Health += health;
+        if (person.Health > person.MaxHealth)
+        {
+            person.Health = person.MaxHealth;
+        }
         return $"{healer.GetType().Name} вылечил {person.GetType().Name} на {health}";
     }
 }

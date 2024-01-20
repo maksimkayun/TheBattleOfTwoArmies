@@ -12,7 +12,7 @@ public class OrcRange : Range
 
     public override void Run(List<Unit> enemyUnits, List<Unit> friendlyUnits)
     {
-        Console.WriteLine($"{nameof(OrcRange)} делает ход");
+        Logger.Log($"{nameof(OrcRange)} делает ход");
         Attack(enemyUnits[new Random().Next(0,enemyUnits.Count - 1)]);
     }
 
@@ -20,17 +20,17 @@ public class OrcRange : Range
     {
         if (ProbabilityBy(Agility))
         {
-            Console.WriteLine($"{nameof(OrcRange)} смог увернуться от атаки");
+            Logger.Log($"{nameof(OrcRange)} смог увернуться от атаки");
         }
         else if (Health > valueDamage)
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
+            Logger.Log($"{nameof(OrcRange)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}");
         }
         else
         {
             base.TakeAttack(valueDamage);
-            Console.WriteLine($"{nameof(OrcRange)} получил урон и умер");
+            Logger.Log($"{nameof(OrcRange)} получил урон и умер");
         }
     }
 
@@ -41,16 +41,16 @@ public class OrcRange : Range
             Arrows--;
             if (ProbabilityBy(Accuracy))
             {
-                Console.WriteLine(_strategy.Run(this, unit, Damage));
+                Logger.Log(Strategy.Run(this, unit, Damage));
             }
             else
             {
-                Console.WriteLine($"{nameof(OrcRange)} промахивается");
+                Logger.Log($"{nameof(OrcRange)} промахивается");
             }
         }
         else
         {
-            Console.WriteLine($"У {nameof(OrcRange)} закончились стрелы");
+            Logger.Log($"У {nameof(OrcRange)} закончились стрелы");
         }
         
     }
